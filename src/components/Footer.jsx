@@ -9,7 +9,7 @@ export default function Footer() {
         <a href="https://linkedin.com/in/vennapusa-murali" target="_blank"><FaLinkedin /></a>
         <a href="https://twitter.com/muralireddyon" target="_blank"><FaTwitter /></a>
       </div> */}
-      <h4><u>P.S:</u>  GGs</h4>
+      <p><u>P.S:</u>   Click on the Hyperspeed Track when reading <a href="#about">About</a>  GGs</p>
       <p>from Murali Vennapusa</p>
     </footer>
   );

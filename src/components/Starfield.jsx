@@ -7,7 +7,7 @@ const Starfield = ({ darkMode }) => {
   const mouse = useRef({ x: 0, y: 0 });
   const scrollY = useRef(0);
 
-  const STAR_COUNT = 120;
+  const STAR_COUNT = 210;
   const WIDTH = window.innerWidth;
   const HEIGHT = window.innerHeight;
 
