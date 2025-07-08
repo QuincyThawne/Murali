@@ -71,7 +71,7 @@ export default function Projects() {
           <div className="project-card" key={idx}>
             <h3>{project.title}</h3>
             <p>{project.description}</p>
-            <a href={project.link} target="_blank" rel="noopener noreferrer">Take me to View</a>
+            <a href={project.link} target="_blank" rel="noopener noreferrer">To View</a>
           </div>
         ))}
       </Slider>
