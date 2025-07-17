@@ -5,6 +5,9 @@ footer {
   background-color: #f0f0f0;
 }
 
+body.light #hide {
+ visibility: hidden;
+}
 .social-icons a {
   margin: 0 10px;
   color: #000;

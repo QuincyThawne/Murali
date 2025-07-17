@@ -1,4 +1,6 @@
-
+html, body {
+  scroll-behavior: smooth;
+}
 /* Reset & Base Styles */
 * {
   margin: 0;

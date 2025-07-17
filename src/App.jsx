@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Loader from './components/loader';
 import TopNavbar from './components/TopNavbar';
 import About from './components/About';
 import Projects from './components/Projects';
@@ -9,8 +10,11 @@ import Hyperspeed from './components/Hyperspeed';
 import AOS from 'aos';
 import './index.css';
 
+
+
 function App() {
   const [darkMode, setDarkMode] = useState(true);
+  
 
   useEffect(() => {
     AOS.init();
@@ -20,10 +24,38 @@ function App() {
     document.body.className = darkMode ? 'dark' : '';
   }, [darkMode]);
   
+  useEffect(() => {
+  const triggerHyperspace = () => {
+    setHyperspace(true);
+    setTimeout(() => setHyperspace(false), 1000);
+  };
+
+  const handleScroll = () => {
+    triggerHyperspace();
+  };
+
+  const handleClick = () => {
+    triggerHyperspace();
+  };
+
+  window.addEventListener('scroll', handleScroll);
+  window.addEventListener('click', handleClick);
+
+  return () => {
+    window.removeEventListener('scroll', handleScroll);
+    window.removeEventListener('click', handleClick);
+  };
+}, []);
+
+  const [hovered, setHovered] = useState(null);
+  const [loaded, setLoaded] = useState(false);
 
   return (
     <div className="app">
-
+    <>
+      {/* {!loaded && <Loader onComplete={() => setLoaded(true)} />}
+      {loaded} */}
+    </>
       <Starfield darkMode={darkMode} />
       <TopNavbar darkMode={darkMode} toggleDarkMode={() => setDarkMode(!darkMode)} />
       {/* Render Hyperspeed only in dark mode */}

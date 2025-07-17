@@ -1,80 +1,102 @@
-import React from 'react';
-import Slider from 'react-slick';
+import portfolio from './images/portfolio.png';
+import mangagari from './images/mangagari.jpeg';
+import onepiece from './images/onepiece.jpeg';
+import unilang from './images/unilang.jpeg';
+import citizen from './images/citizen.jpg';
+import emo from './images/emo.png';
+import mirus from './images/mirus.png';
+import favchars from './images/favChars.png';
+
 import './Projects.css';
 
+function Projects() {
 const projects = [
-{
-  title: 'Portfolio Website',
-  description: 'Personal portfolio built using React and Vite.',
-  link: 'https://github.com/muralivennapusa/portfolio'
-},
-{
-  title: 'UniLang',
-  description: 'Multilingual NLP system that answers user queries.',
-  link: 'https://github.com/muralivennapusa/UniLang'
-},
-{
-  title: 'Project Citizen',
-  description: 'Cybercrime case classifier with citizen complaint support.',
-  link: 'https://github.com/muralivennapusa/Cyber-Project-v2'
-},
-{
-  title: 'Mirus',
-  description: 'VirusTotal API-based link and file scanner.',
-  link: 'https://github.com/muralivennapusa/Mirus'
-},
-{
-  title: 'Manga Gari',
-  description: 'Web scraper that extracts comics and converts to PDFs.',
-  link: 'https://github.com/muralivennapusa/Manga-Gari'
-},
-{
-  title: 'Project OnePiece',
-  description: 'Scrapes episode summaries and converts them to audio.',
-  link: 'https://github.com/muralivennapusa/Project-OnePiece'
-},
-{
-  title: 'Project Emo',
-  description: 'Emotion analyzer for rapid police situation insight.',
-  link: '#'
-},
-{
-  title: 'Fav Chars',
-  description: 'Tribute site for all my favorite fictional characters.',
-  link: 'https://fav-chars.vercel.app'
-},
-
-
-  // Add more projects here...
+  {
+    title: 'Portfolio Website',
+    image: portfolio,
+    description: 'A sleek personal portfolio built using React, Vite, and Tailwind CSS with dark mode and interactive animations.',
+    tech: ['React', 'Vite'],
+    link: 'https://github.com/muralivennapusa/portfolio'
+  },
+  {
+    title: 'UniLang',
+    image:unilang,
+    description: 'A multilingual NLP system that answers user queries using translation and real-time processing.',
+    tech: ['NLP', 'Python','AIML API', 'Flask'],
+    link: 'https://github.com/muralivennapusa/UniLang'
+  },
+  {
+    title: 'Project Citizen',
+    image: citizen,
+    description: 'Cybercrime classification tool that analyzes citizen complaints using machine learning.',
+    tech: ['Python', 'AIML API', 'streamlit'],
+    link: 'https://github.com/muralivennapusa/Cyber-Project-v2'
+  },
+  {
+    title: 'Mirus',
+    image: mirus,
+    description: 'A VirusTotal-powered threat scanner that checks files and URLs for malicious indicators.',
+    tech: ['VirusTotal API', 'Python'],
+    link: 'https://github.com/muralivennapusa/Mirus'
+  },
+  {
+    title: 'Manga Gari',
+    image: mangagari,
+    description: 'Web scraper that extracts manga chapters and converts them to downloadable PDFs.',
+    tech: ['Python', 'BeautifulSoup', 'PIL'],
+    link: 'https://github.com/muralivennapusa/Manga-Gari'
+  },
+  {
+    title: 'Project OnePiece',
+    image: onepiece,
+    description: 'Scrapes One Piece episode summaries and converts them into narrated audio files.',
+    tech: ['Python', 'Web Scraping', "pyttsx3"],
+    link: 'https://github.com/muralivennapusa/Project-OnePiece'
+  },
+  {
+    title: 'Project Emo',
+    image: emo,
+    description: 'Emotion analysis tool designed to assist law enforcement by providing emotional context from statements.',
+    tech: ['Python', 'NLP', 'Sentiment Analysis'],
+    link: '#'
+  },
+  {
+    title: 'Fav Chars',
+    image: favchars,
+    description: 'Tribute site to my favorite anime and fictional characters with interactive UI.',
+    tech: ['React', 'Vite', 'Custom Loader'],
+    link: 'https://fav-chars.vercel.app'
+  }
 ];
 
-export default function Projects() {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 2,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: { slidesToShow: 1 }
-      }
-    ]
-  };
 
   return (
-    <section id="projects" className="projects-section" data-aos="fade-up">
-      <h2 className="projects-title">Works of Mine ...</h2>
-      <Slider {...settings}>
+    <div id="projects" className="projects-section">
+      <h1 className="projects-title">Works of Mine ...</h1>
+      <div className="projects-grid">
         {projects.map((project, idx) => (
-          <div className="project-card" key={idx}>
-            <h3>{project.title}</h3>
-            <p>{project.description}</p>
-            <a href={project.link} target="_blank" rel="noopener noreferrer">To View</a>
+          <div
+            key={idx}
+            className="project-card"
+            onClick={() => window.open(project.link, '_blank')}
+          >
+            <img src={project.image} alt={project.title} className="project-image" />
+            <div className="project-content">
+              <h3>{project.title}</h3>
+              <p>{project.description}</p>
+              <div className="project-tech">
+                {project.tech.map((t, i) => (
+                  <span key={i} className="tech-badge">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         ))}
-      </Slider>
-    </section>
+      </div>
+    </div>
   );
 }
+
+export default Projects;
