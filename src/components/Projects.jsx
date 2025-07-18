@@ -22,7 +22,7 @@ const projects = [
     title: 'UniLang',
     image:unilang,
     description: 'A multilingual NLP system that answers user queries using translation and real-time processing.',
-    tech: ['NLP', 'Python','AIML API', 'Flask'],
+    tech: ['NLP','OpenAI', 'Python','AIML API', 'Flask'],
     link: 'https://github.com/muralivennapusa/UniLang'
   },
   {
@@ -57,7 +57,7 @@ const projects = [
     title: 'Project Emo',
     image: emo,
     description: 'Emotion analysis tool designed to assist law enforcement by providing emotional context from statements.',
-    tech: ['Python', 'NLP', 'Sentiment Analysis','Whisper'],
+    tech: ['Python', 'NLP', 'Sentiment Analysis','Whisper','OpenAI'],
     link: 'https://github.com/muralivennapusa/Emolyzer'
   },
   {
