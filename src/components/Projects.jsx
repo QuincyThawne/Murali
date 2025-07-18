@@ -57,8 +57,8 @@ const projects = [
     title: 'Project Emo',
     image: emo,
     description: 'Emotion analysis tool designed to assist law enforcement by providing emotional context from statements.',
-    tech: ['Python', 'NLP', 'Sentiment Analysis'],
-    link: '#'
+    tech: ['Python', 'NLP', 'Sentiment Analysis','Whisper'],
+    link: 'https://github.com/muralivennapusa/Emolyzer'
   },
   {
     title: 'Fav Chars',
