@@ -10,10 +10,13 @@ body.light #hide {
 }
 .social-icons a {
   margin: 0 10px;
-  color: #000;
   font-size: 1.5rem;
 }
 
+#redirect
+{
+  color: rgb(52, 180, 240);
+}
 body.dark footer {
   background-color: #1e1e1e;
   color: white;
