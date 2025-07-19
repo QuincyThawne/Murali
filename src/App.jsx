@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Loader from './components/loader';
+import TargetCursor from './components/TargetCursor';
 import TopNavbar from './components/TopNavbar';
 import About from './components/About';
 import Projects from './components/Projects';
@@ -55,7 +56,13 @@ function App() {
     <>
       {/* {!loaded && <Loader onComplete={() => setLoaded(true)} />}
       {loaded} */}
-    </>
+{
+darkMode &&
+            <TargetCursor 
+        spinDuration={2}
+        hideDefaultCursor={true}
+      />
+    }    </>
       <Starfield darkMode={darkMode} />
       <TopNavbar darkMode={darkMode} toggleDarkMode={() => setDarkMode(!darkMode)} />
       {/* Render Hyperspeed only in dark mode */}
