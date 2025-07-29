@@ -11,7 +11,7 @@ export default function Footer() {
         <a href="https://twitter.com/muralireddyon" target="_blank"><FaTwitter /></a>
       </div> */}
       
-      <p id="hide"><u>P.S:</u>   Click on the Hyperspeed Track when reading <a id="redirect" href="#about">About</a>  GGs</p>
+      <p id="hide"><u>P.S:</u>   Click on the Hyperspeed Track when <a id="redirect" href="#about">@Home</a>  GGs</p>
       
       <p>from Murali Vennapusa</p>
     </footer>
