@@ -53,7 +53,7 @@ const ScrollingIcons = () => {
   );
 
   return (
-    <div id="tech">
+    <div id="about">
     <div className="scrolling-icons-container">
       <h1>What I Use ...</h1>
       {renderScrollRow(techIcons, "tech")}

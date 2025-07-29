@@ -4,7 +4,7 @@ import './About.css';
 
 export default function About() {
   return (
-    <section id="about" className="about-fullscreen">
+    <section id="home" className="about-fullscreen">
       <div className="about-inner">
         <img src={profile} alt="Profile" className="profile-banner-img" />
         <div className="about-text-content">

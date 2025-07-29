@@ -4,8 +4,8 @@ import GooeyNav from './GooeyNav';
 import { Moon, Sun } from 'lucide-react';
 
 const items = [
-  { label: "Home", href: "#about" },
-  { label: "About", href: "#tech" },
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
   { label: "Projects", href:"#projects"},
   { label: "Socials", href: "#socials" },
 ];
