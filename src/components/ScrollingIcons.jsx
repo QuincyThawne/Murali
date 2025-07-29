@@ -10,7 +10,7 @@ import streamlit from "../assets/icons/streamlit.png";
 import react from "../assets/icons/react.svg";
 import vite from "../assets/icons/vite.svg";
 import postman from "../assets/icons/postman.svg";
-import api from "../assets/icons/api.png";
+import flask from "../assets/icons/flask.png";
 
 // 🎮 Hobby Icons
 import reddit from "../assets/icons/reddit.svg";
@@ -29,7 +29,7 @@ const ScrollingIcons = () => {
     { src: react, alt: "React" },
     { src: vite, alt: "Vite" },
     { src: postman, alt: "Postman" },
-    { src: api, alt: "api" },
+    { src: flask, alt: "flask" },
   ];
 
   const hobbyIcons = [
