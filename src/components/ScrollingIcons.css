@@ -1,0 +1,61 @@
+/* src/components/ScrollingIcons.css */
+
+#tech
+{
+  width: 100vw;
+  height: 100vh;
+  padding-top: 4rem; /* enough for navbar */
+  background-color: var(--about-bg, #fdfdfd);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  background: transparent;
+}
+
+h1{
+    font-size: 2.4rem;
+}
+
+.scrolling-icons-container {
+  margin: 40px auto;
+  width: 60%;
+  overflow: hidden;
+  display: flex;
+  text-align:center;
+  flex-direction: column;
+  gap: 40px;
+  padding: 20px;
+}
+
+.scrolling-row {
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+}
+
+.scrolling-track {
+  display: inline-flex;
+  animation: scroll-horizontal 20s linear infinite;
+}
+
+.scrolling-row.hobby .scrolling-track {
+  animation-duration: 30s;
+}
+
+.icon {
+  width: 100px;
+  height: 100px;
+  margin: 0 20px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes scroll-horizontal {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

@@ -8,6 +8,7 @@ import Socials from './components/Socials';
 import Footer from './components/Footer';
 import Starfield from './components/Starfield';
 import Hyperspeed from './components/Hyperspeed';
+import ScrollingIcons from "./components/ScrollingIcons";
 import AOS from 'aos';
 import './index.css';
 
@@ -109,6 +110,7 @@ darkMode &&
       )}
 
       <About />
+      <ScrollingIcons />
       <Projects />
       <Socials />
       <Footer />
