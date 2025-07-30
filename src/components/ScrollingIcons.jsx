@@ -110,7 +110,7 @@ export default function ScrollingIcons() {
           />
         </h3>
 
-        <h1>What I Do ...</h1>
+        <h1 style={{ marginTop: "80px" }}>What I Do ...</h1>
         <div className="carousel-section" aria-label="Hobbies carousel">
           <Slider {...sliderSettings}>
             {hobbyIcons.map((it, i) => (
