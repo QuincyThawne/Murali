@@ -43,8 +43,8 @@ const projects = [
     title: 'Manga Gari',
     image: mangagari,
     description: 'Web scraper that extracts manga chapters and converts them to downloadable PDFs.',
-    tech: ['Python', 'BeautifulSoup', 'PIL'],
-    link: 'https://github.com/muralivennapusa/Manga-Gari'
+    tech: ['Python', 'BeautifulSoup', 'PIL', 'Streamlit'],
+    link: 'https://manga-gari.streamlit.app/'
   },
   {
     title: 'Project OnePiece',
