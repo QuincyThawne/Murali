@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback, useMemo } from "react";
+import { useEffect, useRef, useCallback, useMemo, useState } from "react";
 import { gsap } from "gsap";
 import "./TargetCursor.css";
 
@@ -10,6 +10,18 @@ const TargetCursor = ({
   const cursorRef = useRef(null);
   const cornersRef = useRef(null);
   const spinTl = useRef(null);
+  const [hasPointer, setHasPointer] = useState(false);
+
+  // Check if device has fine pointer (mouse)
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(pointer: fine)');
+    setHasPointer(mediaQuery.matches);
+
+    const handleMediaChange = (e) => setHasPointer(e.matches);
+    mediaQuery.addEventListener('change', handleMediaChange);
+    
+    return () => mediaQuery.removeEventListener('change', handleMediaChange);
+  }, []);
 
   const constants = useMemo(
     () => ({
@@ -34,7 +46,7 @@ const TargetCursor = ({
     if (!cursorRef.current) return;
 
     const originalCursor = document.body.style.cursor;
-    if (hideDefaultCursor) {
+    if (hideDefaultCursor && hasPointer) {
       document.body.style.cursor = 'none';
     }
 
@@ -285,7 +297,7 @@ const TargetCursor = ({
     }
   }, [spinDuration]);
 
-  return (
+  return hasPointer ? (
     <div ref={cursorRef} className="target-cursor-wrapper">
       <div className="target-cursor-dot" />
       <div className="target-cursor-corner corner-tl" />
@@ -293,7 +305,7 @@ const TargetCursor = ({
       <div className="target-cursor-corner corner-br" />
       <div className="target-cursor-corner corner-bl" />
     </div>
-  );
+  ) : null;
 };
 
 export default TargetCursor;
