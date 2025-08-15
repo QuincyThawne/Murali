@@ -68,7 +68,7 @@ function IconCard({ item }) {
 const sliderSettings = {
   infinite: true,
   speed: 2000, // slower = smoother
-  slidesToShow: 7, // ✅ fit more cards
+  slidesToShow: 6, // ✅ fit more cards
   slidesToScroll: 1,
   centerMode: false,
   autoplay: true, // ✅ optional
@@ -77,36 +77,9 @@ const sliderSettings = {
   swipeToSlide: true,
   arrows: false, // optional to hide arrows
   responsive: [
-    {
-      breakpoint: 1440,
-      settings: {
-        slidesToShow: 6
-      }
-    },
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 5
-      }
-    },
-    {
-      breakpoint: 768,
-      settings: {
-        slidesToShow: 4
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        slidesToShow: 3
-      }
-    },
-    {
-      breakpoint: 360,
-      settings: {
-        slidesToShow: 2
-      }
-    }
+    { breakpoint: 1024, settings: { slidesToShow: 5 } },
+    { breakpoint: 768, settings: { slidesToShow: 4 } },
+    { breakpoint: 480, settings: { slidesToShow: 3 } }
   ]
 };
 
