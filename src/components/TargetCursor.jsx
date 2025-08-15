@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback, useMemo, useState } from "react";
+import { useEffect, useRef, useCallback, useMemo } from "react";
 import { gsap } from "gsap";
 import "./TargetCursor.css";
 
@@ -10,19 +10,7 @@ const TargetCursor = ({
   const cursorRef = useRef(null);
   const cornersRef = useRef(null);
   const spinTl = useRef(null);
-  const [hasPointer, setHasPointer] = useState(false);
-
-  // Check if device has fine pointer (mouse)
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(pointer: fine)');
-    setHasPointer(mediaQuery.matches);
-
-    const handleMediaChange = (e) => setHasPointer(e.matches);
-    mediaQuery.addEventListener('change', handleMediaChange);
-    
-    return () => mediaQuery.removeEventListener('change', handleMediaChange);
-  }, []);
-
+  const dotRef = useRef(null);
   const constants = useMemo(
     () => ({
       borderWidth: 3,
@@ -46,7 +34,7 @@ const TargetCursor = ({
     if (!cursorRef.current) return;
 
     const originalCursor = document.body.style.cursor;
-    if (hideDefaultCursor && hasPointer) {
+    if (hideDefaultCursor) {
       document.body.style.cursor = 'none';
     }
 
@@ -91,6 +79,48 @@ const TargetCursor = ({
     const moveHandler = (e) => moveCursor(e.clientX, e.clientY);
     window.addEventListener("mousemove", moveHandler);
 
+    const scrollHandler = () => {
+      if (!activeTarget || !cursorRef.current) return;
+      
+      const mouseX = gsap.getProperty(cursorRef.current, "x");
+      const mouseY = gsap.getProperty(cursorRef.current, "y");
+      
+      const elementUnderMouse = document.elementFromPoint(mouseX, mouseY);
+      const isStillOverTarget = elementUnderMouse && (
+        elementUnderMouse === activeTarget || 
+        elementUnderMouse.closest(targetSelector) === activeTarget
+      );
+      
+      if (!isStillOverTarget) {
+        if (currentLeaveHandler) {
+          currentLeaveHandler();
+        }
+      }
+    };
+
+    window.addEventListener("scroll", scrollHandler, { passive: true });
+
+    //---------------------------------------------------------------
+    // This code for onclick animation
+
+    window.addEventListener("mousemove", moveHandler);
+    const mouseDownHandler = () => {
+      if (!dotRef.current) return;
+      gsap.to(dotRef.current, { scale: 0.7, duration: 0.3 });
+      gsap.to(cursorRef.current, { scale: 0.9, duration: 0.2 });
+    };
+
+    // Animate it back to its original size
+    const mouseUpHandler = () => {
+      if (!dotRef.current) return;
+      gsap.to(dotRef.current, { scale: 1, duration: 0.3 });
+      gsap.to(cursorRef.current, { scale: 1, duration: 0.2 });
+    };
+
+    window.addEventListener("mousedown", mouseDownHandler);
+    window.addEventListener("mouseup", mouseUpHandler);
+
+    //----------------------------------------------------------------
     const enterHandler = (e) => {
       const directTarget = e.target;
 
@@ -274,6 +304,7 @@ const TargetCursor = ({
     return () => {
       window.removeEventListener("mousemove", moveHandler);
       window.removeEventListener("mouseover", enterHandler);
+      window.removeEventListener("scroll", scrollHandler);
 
       if (activeTarget) {
         cleanupTarget(activeTarget);
@@ -297,15 +328,15 @@ const TargetCursor = ({
     }
   }, [spinDuration]);
 
-  return hasPointer ? (
+  return (
     <div ref={cursorRef} className="target-cursor-wrapper">
-      <div className="target-cursor-dot" />
+      <div ref={dotRef} className="target-cursor-dot" />
       <div className="target-cursor-corner corner-tl" />
       <div className="target-cursor-corner corner-tr" />
       <div className="target-cursor-corner corner-br" />
       <div className="target-cursor-corner corner-bl" />
     </div>
-  ) : null;
+  );
 };
 
 export default TargetCursor;

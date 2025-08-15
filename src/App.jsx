@@ -57,13 +57,12 @@ function App() {
     <>
       {/* {!loaded && <Loader onComplete={() => setLoaded(true)} />}
       {loaded} */}
-{
-darkMode &&
+
             <TargetCursor 
         spinDuration={2}
         hideDefaultCursor={true}
       />
-    }    </>
+    </>
       <Starfield darkMode={darkMode} />
       <TopNavbar darkMode={darkMode} toggleDarkMode={() => setDarkMode(!darkMode)} />
       {/* Render Hyperspeed only in dark mode */}
